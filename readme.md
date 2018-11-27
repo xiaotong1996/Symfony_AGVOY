@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 This is a Symfony flex skeleton for a minimal Symfony AgVoy app
 project, used for teaching CSC4101 at Telecom SudParis.
 
@@ -28,3 +29,7 @@ CHI Luc
    			
    		</div>
     </div>
+=======
+# Symfony_AGVOY
+school project with Luc (CSC4101)
+>>>>>>> 52de418fefc58193ce612840d02c5416adf4fafb
