@@ -16,20 +16,7 @@ To test, use :
 CHEN Xiaotong
 CHI Luc
 
-<div class="jumbotron jumbotron-fluid">
-   		<div class="container">
-   			<h1>Agvoy</h1>
-   			<a href="{{ path('fos_user_security_login') }}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Login</a>
-   			
-   			
-<div class="btn-group-vertical">
-    <button type="button" class="btn btn-default">Login</button>
-    <button type="button" class="btn btn-default">Register</button>
-</div>
-   			
-   		</div>
-    </div>
 =======
 # Symfony_AGVOY
 school project with Luc (CSC4101)
->>>>>>> 52de418fefc58193ce612840d02c5416adf4fafb
+
