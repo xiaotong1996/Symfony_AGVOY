@@ -1,0 +1,90 @@
+{% extends "back/basebackoffice.html.twig" %}
+
+{% block title %}Etape{% endblock %}
+
+{% block body %}
+    <h1>Etape</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ etape.id }}</td>
+            </tr>
+            <tr>
+                <th>NumeroEtape</th>
+                <td>{{ etape.numeroEtape }}</td>
+            </tr>
+            <tr>
+                <th>VilleEtape</th>
+                <td>{{ etape.villeEtape }}</td>
+            </tr>
+            <tr>
+                <th>NombreJours</th>
+                <td>{{ etape.nombreJours }}</td>
+            </tr>
+            <tr>
+                <th>Circuit</th>
+                <td><a href="{{ path('admin_circuit_show', {'id': etape.circuit.id}) }}">{{ etape.circuit.description }}</a>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+
+    
+    <a href="{{ path('admin_etape_index') }}">back to list</a>
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('admin_etape_edit', {'id': etape.id}) }}">edit</a>
+    {% endif %}
+    {{ include('back/etape/_delete_form.html.twig') }}
+  
+    
+    {#
+    <div class="form-horizontal"><!-- <form>  -->
+    
+    	<div class="form-group row">
+    		<label class="col-sm-2 col-form-label">Id</label>
+    		<div class="col-sm-10">
+    		    <div class="form-control form-control-plaintext">{{ etape.id }}</div>
+    		</div>
+    	</div>
+    	
+    	<div class="form-group row">
+    		<label class="col-sm-2 col-form-label">NumeroEtape</label>
+    		<div class="col-sm-10">
+    		    <div class="form-control form-control-plaintext">{{ etape.numeroEtape }}</div>
+    		</div>
+    	</div>
+    	
+    	<div class="form-group row">
+    		<label class="col-sm-2 col-form-label">VilleEtape</label>
+    		<div class="col-sm-10">
+    		    <div class="form-control form-control-plaintext">{{ etape.villeEtape }}</div>
+    		</div>
+    	</div>
+    	
+    	<div class="form-group row">
+    		<label class="col-sm-2 col-form-label">NombreJours</label>
+    		<div class="col-sm-10">
+    		    <div class="form-control form-control-plaintext">{{ etape.nombreJours }}</div>
+    		</div>
+    	</div>
+    	
+    	<div class="form-group row">
+    		<label class="col-sm-2 col-form-label">Circuit</label>
+    		<div class="col-sm-10">
+    		    <div class="form-control form-control-plaintext">
+    		    	<a href="{{ path('admin_circuit_show', {'id': etape.circuit.id}) }}"data-toggle="tooltip" title="{{ etape.circuit.description }}">{{ etape.circuit.description }}</a>
+    		    </div>
+    		</div>
+    	</div>
+    
+    </div><!-- form-horizontal </form>  --> 
+
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href="{{ path('admin_etape_edit', {'id': etape.id}) }}">edit</a>
+    {% endif %}
+    <a href="{{ path('admin_etape_index') }}">back to list</a>
+     #} 
+{% endblock %}

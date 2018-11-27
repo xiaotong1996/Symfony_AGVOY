@@ -1,0 +1,11 @@
+{% extends "back/basebackoffice.html.twig" %}
+
+{% block title %}New Etape{% endblock %}
+
+{% block body %}
+    <h1>Create new Etape</h1>
+
+    {{ include('back/etape/_form.html.twig') }}
+
+    <a href="{{ path('admin_etape_index') }}">back to list</a>
+{% endblock %}

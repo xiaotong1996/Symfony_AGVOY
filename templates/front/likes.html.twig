@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Liste des Programmation circuits</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>description</th>
+                <th>paysDepart</th>
+                <th>villeDepart</th>
+                <th>villeArrivee</th>
+                <th>dureeCircuit</th>
+                <th>dateDepart</th> 
+                <th>nombrePersonnes</th>
+                <th>prix</th>
+                <th>details</th>
+                <th>like</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for proCircuit in proCircuits %}
+            <tr>
+                <td>{{ proCircuit.id }}</td>
+                <td>{{ proCircuit.circuit.description}}</td>
+                <td>{{ proCircuit.circuit.paysDepart }}</td>
+                <td>{{ proCircuit.circuit.villeDepart }}</td>
+                <td>{{ proCircuit.circuit.villeArrivee }}</td>
+				<td>{{ proCircuit.circuit.dureeCircuit }}</td>
+				<td>{{ proCircuit.dateDepart|date('Y-m-d H:i:s')}}</td>
+				<td>{{ proCircuit.nombrePersonnes }}</td>
+				<td>{{ proCircuit.prix }}</td>
+				<td>
+   				<a href="{{ path('front_circuit_show', {id: proCircuit.id}) }}">détails</a>
+				</td>
+				<td>
+				<a href="{{ path('front_circuit_like', {id: proCircuit.id}) }}">dislike</a>
+				</td>
+				
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no programmation circuits found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{%  block alerts %}
+ {% for type, messages in app.session.flashBag.all %}
+    {% for message in messages %}
+        {%if type == 'error'%} {% set type = 'danger' %} {%endif%}
+        {%if type == 'message'%} {% set type = 'info' %} {%endif%}
+        <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <p>{{ message|raw }}</p>
+        </div>
+    {% endfor %}
+{% endfor %}
+{% endblock %} {# alerts #}
+
+{% endblock %} {# body #}

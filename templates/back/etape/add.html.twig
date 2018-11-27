@@ -1,0 +1,13 @@
+{% extends "back/basebackoffice.html.twig" %}
+
+{% block title %}New Etape for circuit {{ circuit.id }}{% endblock %}
+
+{% block body %}
+    <h1>Create new Etape</h1>
+    
+    <p>For circuit "{{ circuit.description }}" :</p>
+
+    {{ include('back/etape/_form.html.twig') }}
+
+    <a href="{{ path('admin_circuit_show', {'id': circuit.id}) }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "back/basebackoffice.html.twig" %}
+
+{% block title %}Circuit{% endblock %}
+
+{% block body %}
+    <h1>Circuit</h1>
+
+   <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ circuit.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ circuit.description }}</td>
+            </tr>
+            <tr>
+                <th>PaysDepart</th>
+                <td>{{ circuit.paysDepart }}</td>
+            </tr>
+            <tr>
+                <th>VilleDepart</th>
+                <td>{{ circuit.villeDepart }}</td>
+            </tr>
+            <tr>
+                <th>VilleArrivee</th>
+                <td>{{ circuit.villeArrivee }}</td>
+            </tr>
+            <tr>
+                <th>DureeCircuit</th>
+                <td>{{ circuit.dureeCircuit }}</td>
+            </tr>
+        </tbody>
+    </table>
+   
+
+    
+    <a href="{{ path('admin_circuit_edit', {'id': circuit.id}) }}">edit</a>
+
+    {{ include('back/circuit/_delete_form.html.twig') }}
+    
+     <hr>
+    <h2>Etapes</h2>
+    <table class="table">
+  <thead>
+    <tr>
+        <th>Numéro</th>
+        <th>villeEtape</th>
+        <th>nombreJours</th>
+    </tr>
+  </thead>
+
+
+  {%  for etape in circuit.etapes %}
+  <tr>
+    <td>{{ etape.numeroEtape }}</td>
+    <td>{{ etape.villeEtape }}</td>
+    <td>{{ etape.nombreJours }}</td>
+  </tr>
+  {% else %}
+    <tr>
+        <td colspan="2">no etape found</td>
+    </tr>
+  {% endfor %} {# etapes #}
+</table>
+    
+    <a href="{{ path('admin_etape_add', {'id': circuit.id}) }}">add new etape</a>
+     <hr>
+    <a href="{{ path('admin_circuit_index') }}">back to list</a>
+    
+     
+{% endblock %}

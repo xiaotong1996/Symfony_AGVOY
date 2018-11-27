@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+	<script src="/js/bootstrap.min.js"></script>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    
+
+
+    {% block header %}
+    	<nav class="navbar navbar-default" role="navigation">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="{{ path('home') }}">AGVOY</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+            {% if is_granted("ROLE_USER") %}
+               	<li><a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-user"></span> Logout</a></li>
+            {% else %}
+            	<li><a href="{{ path('fos_user_registration_register') }}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+              	<li><a href="{{ path('fos_user_security_login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+             {% endif %}
+            </ul> 
+          </div>
+		</nav>
+    {% endblock %}
+
+	{% block menu %}
+			{# Collect the nav links, forms, and other content for toggling #}
+			<nav class="navbar navbar-expand-md navbar-dark bg-light">
+                {{ knp_menu_render('main', {'currentClass': 'active'}) }}
+				{{ knp_menu_render('user', {'currentClass': 'active'}) }}
+			</nav>
+	{% endblock %} {# menu #}
+	
+         <div class="container">
+    {% block body %}
+	
+   		 {% block main %}MAIN{% endblock %} {# main #}
+
+    {% endblock %} {# body #}
+		</div> <!-- container -->
+	{% block footer %}
+	<footer class="page-footer font-small blue">
+   		<div class="footer-copyright text-center py-3">@ 2018 Copyright
+   			<a href="{{ path('home') }}">Agvoy</a>
+   		</div>
+		
+	</footer>
+	{% endblock %} {# footer #}
+
+	{% block javascripts %}
+	{% endblock %} {# javascripts #}
+	{% block custompage_script %}
+    {% endblock %} {# custompage_scripts #}
+</html>

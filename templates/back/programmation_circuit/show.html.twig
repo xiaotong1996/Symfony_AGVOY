@@ -1,0 +1,101 @@
+{% extends "back/basebackoffice.html.twig" %}
+
+
+{% block title %}ProgrammationCircuit{% endblock %}
+
+{% block body %}
+    <h1>ProgrammationCircuit</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ programmation_circuit.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td><a href="{{ path('admin_circuit_show', {'id': programmation_circuit.circuit.id }) }}">{{ programmation_circuit.circuit.description }}</a></td>
+            </tr>
+            <tr>
+                <th>DateDepart</th>
+                <td>{{ programmation_circuit.dateDepart ? programmation_circuit.dateDepart|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>NombrePersonnes</th>
+                <td>{{ programmation_circuit.nombrePersonnes }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ programmation_circuit.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    
+
+    <a href="{{ path('admin_programmation_circuit_edit', {'id': programmation_circuit.id}) }}">edit</a>
+    
+     <h2>Circuit</h1>
+
+   <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ programmation_circuit.circuit.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ programmation_circuit.circuit.description }}</td>
+            </tr>
+            <tr>
+                <th>PaysDepart</th>
+                <td>{{ programmation_circuit.circuit.paysDepart }}</td>
+            </tr>
+            <tr>
+                <th>VilleDepart</th>
+                <td>{{ programmation_circuit.circuit.villeDepart }}</td>
+            </tr>
+            <tr>
+                <th>VilleArrivee</th>
+                <td>{{ programmation_circuit.circuit.villeArrivee }}</td>
+            </tr>
+            <tr>
+                <th>DureeCircuit</th>
+                <td>{{ programmation_circuit.circuit.dureeCircuit }}</td>
+            </tr>
+        </tbody>
+    </table>
+   
+     <hr>
+    <h2>Etapes</h2>
+    <table class="table">
+  <thead>
+    <tr>
+        <th>Numéro</th>
+        <th>villeEtape</th>
+        <th>nombreJours</th>
+    </tr>
+  </thead>
+
+
+  {%  for etape in programmation_circuit.circuit.etapes %}
+  <tr>
+    <td>{{ etape.numeroEtape }}</td>
+    <td>{{ etape.villeEtape }}</td>
+    <td>{{ etape.nombreJours }}</td>
+  </tr>
+  {% else %}
+    <tr>
+        <td colspan="2">no etape found</td>
+    </tr>
+  {% endfor %} {# etapes #}
+</table>
+    
+   
+
+    
+
+    {{ include('back/programmation_circuit/_delete_form.html.twig') }}
+    
+    <a href="{{ path('admin_programmation_circuit_index') }}">back to list</a>
+{% endblock %}

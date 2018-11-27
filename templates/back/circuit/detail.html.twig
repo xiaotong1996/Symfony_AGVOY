@@ -1,0 +1,28 @@
+{% extends "back/basebackoffice.html.twig" %}
+
+
+{% block body %}
+<h1>Circuit {{circuit.id}}</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+        <th>Numéro</th>
+        <th>villeEtape</th>
+        <th>nombreJours</th>
+    </tr>
+  </thead>
+
+
+  {%  for etape in circuit.etapes %}
+  <tr>
+    <td>{{ etape.numeroEtape }}</td>
+    <td>{{ etape.villeEtape }}</td>
+    <td>{{ etape.nombreJours }}</td>
+  </tr>
+  {% endfor %} {# etapes #}
+</table>
+
+<a href="{{ path('admin_circuit_index') }}">retour à l'accueil</a>
+
+{% endblock %} {# body #}

@@ -1,0 +1,85 @@
+{% extends "back/basebackoffice.html.twig" %}
+
+
+{% block title %}ProgrammationCircuit index{% endblock %}
+
+{% block body %}
+    <h1>ProgrammationCircuit index</h1>
+
+   {# <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateDepart</th>
+                <th>NombrePersonnes</th>
+                <th>Prix</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for programmation_circuit in programmation_circuits %}
+            <tr>
+                <td>{{ programmation_circuit.id }}</td>
+                <td>{{ programmation_circuit.dateDepart ? programmation_circuit.dateDepart|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ programmation_circuit.nombrePersonnes }}</td>
+                <td>{{ programmation_circuit.prix }}</td>
+                <td>
+                    <a href="{{ path('admin_programmation_circuit_show', {'id': programmation_circuit.id}) }}">show</a>
+                    <a href="{{ path('admin_programmation_circuit_edit', {'id': programmation_circuit.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+#}
+
+
+ <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>description</th>
+                <th>paysDepart</th>
+                <th>villeDepart</th>
+                <th>villeArrivee</th>
+                <th>dureeCircuit</th>
+                <th>dateDepart</th> 
+                <th>nombrePersonnes</th>
+                <th>prix</th>
+                <th>actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for proCircuit in programmation_circuits %}
+            <tr>
+                <td>{{ proCircuit.id }}</td>
+                <td>{{ proCircuit.circuit.description}}</td>
+                <td>{{ proCircuit.circuit.paysDepart }}</td>
+                <td>{{ proCircuit.circuit.villeDepart }}</td>
+                <td>{{ proCircuit.circuit.villeArrivee }}</td>
+				<td>{{ proCircuit.circuit.dureeCircuit }}</td>
+				<td>{{ proCircuit.dateDepart|date('Y-m-d H:i:s')}}</td>
+				<td>{{ proCircuit.nombrePersonnes }}</td>
+				<td>{{ proCircuit.prix }}</td>
+				<td>
+                    <a href="{{ path('admin_programmation_circuit_show', {'id': proCircuit.id}) }}">show</a>
+                    <a href="{{ path('admin_programmation_circuit_edit', {'id': proCircuit.id}) }}">edit</a>
+                </td>
+				
+				
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no programmation circuits found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_programmation_circuit_new') }}">Create new</a>
+{% endblock %}
