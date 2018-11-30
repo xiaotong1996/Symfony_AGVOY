@@ -32,9 +32,10 @@
 
     
     
-     <h2>Circuit</h1>
+     <h2 id="circuittitle">Circuit</h2>
+     <button id="button1" class="btn">Show/Hide</button>
 
-   <table class="table">
+   <table class="table" id="Circuit">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -62,10 +63,11 @@
             </tr>
         </tbody>
     </table>
-   
+ 
      <hr>
     <h2>Etapes</h2>
-    <table class="table">
+     <button id="myShowHidebtn" class="btn">Show/Hide</button>
+    <table class="table" id="Etape">
   <thead>
     <tr>
         <th>Numéro</th>
@@ -106,12 +108,45 @@
     <td>{{ etape.villeEtape }}</td>
     <td>{{ etape.nombreJours }}</td>
   </tr>
-  {% endfor %} {# etapes #}
+  {% endfor %} 
+  
 </table>
+$(document).ready(function(){
+	$("#hide").click(function(){
+	   // $("#Ciruit").hide();
+		$("#test").hide();
+	  });
+}
 
+    jQuery(document).ready(function(){
+    	$("#hide").click(function(){
+    		$("#test").toggle();
+    	  });
+    });
+    
+    function $(s){return document.getElementById(s);} 
+    function display(y){$(y).style.display=($(y).style.display=="none")?"":"none";}
+    
+    
+#}
 <a href="{{ path('frontoffice_circuitlist') }}">retour à l'accueil</a>
-
-
-
 {% endblock %} {# body #}
+
+{% block custompage_script %}
+    <script>
+    jQuery(document).ready(function(){
+    	$("#button1").click(function(){
+    		$("#Circuit").toggle();
+    	  });
+    });
+    
+    	jQuery(document).ready(function(){
+        	$("#myShowHidebtn").click(function(){
+        		$("#Etape").toggle();
+        	  });
+        });
+    </script> 
+{% endblock %} {# custompage_script #}
+
+
 

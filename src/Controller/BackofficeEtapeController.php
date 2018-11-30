@@ -36,6 +36,16 @@ class BackofficeEtapeController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($etape);
             $em->flush();
+            
+            $circuit=$etape->getCircuit();
+            $dureeCircuit=$circuit->getDureeCircuit()+$etape->getNombreJours();
+            $circuit->setDureeCircuit($dureeCircuit);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($circuit);
+            $em->flush();
+            
+            dump($circuit);
+            dump($etape);
 
             return $this->redirectToRoute('admin_etape_index');
         }
